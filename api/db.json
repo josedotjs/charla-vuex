@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Café de Colombia",
+      "price": 100,
+      "description": "Uno de los mejores cafes del mundo"
+    },
+    {
+      "name": "Café de Brasil",
+      "description": "Directo de la selva",
+      "price": 50,
+      "id": 2
+    },
+    {
+      "name": "Café de Perú",
+      "description": "Blend de Amazonas y Cuzco",
+      "price": 75,
+      "createdAt": 1622939553358,
+      "id": 3
+    },
+    {
+      "name": "Café de Etiopía",
+      "description": "El café de Limu se cultiva en el suroeste de Etiopía, a 1100-1900 m s.n.m. Como un café lavado de acidez relativamente baja, tiene un cuerpo bien equilibrado y un sabor marcadamente especiado que es agradablemente dulce y tiene a menudo notas florales.",
+      "price": 150,
+      "createdAt": 1622958301557,
+      "id": 4
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
