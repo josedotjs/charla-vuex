@@ -25,6 +25,13 @@
       "price": 150,
       "createdAt": 1622958301557,
       "id": 4
+    },
+    {
+      "name": "Café de Bolivia",
+      "description": "Las características principales del café están en el grano mismo que se encuentra dentro del \nfruto de la planta, denominado cereza. La obtención del café proviene del árbol del cafeto que \nregularmente necesita una temperatura oscilante entre (20° a 25° C) y una humedad atmosférica \nimportante. El conjunto de cafetos conforman el cafetal cuyo desarrollo requiere de sombra, \nprotección del viento y de las temperaturas bajas además del cuidado contra las plagas.",
+      "price": 75,
+      "createdAt": 1623608472036,
+      "id": 5
     }
   ],
   "posts": [

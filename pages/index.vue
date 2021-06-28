@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import api from '@/services/api'
-
 export default {
   data() {
     return {
@@ -62,10 +60,7 @@ export default {
   },
   methods: {
     testApi() {
-      api
-        .get('/comments')
-        .then((data) => console.log(data))
-        .catch((e) => console.error(e))
+      console.log('aaa')
     },
   },
 }

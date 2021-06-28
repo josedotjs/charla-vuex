@@ -116,13 +116,18 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Pedido',
           to: '/',
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'Productos',
           to: '/products',
+        },
+        {
+          icon: 'mdi-currency-usd',
+          title: 'Checkout',
+          to: '/checkout',
         },
       ],
       miniVariant: false,

@@ -1,8 +1,9 @@
 <template>
   <v-select
     v-bind="$attrs"
-    placeholder="Seleccione su item"
+    outlined
     :full-width="true"
+    append-outer-icon="mdi-refresh"
     v-on="$listeners"
   ></v-select>
 </template>

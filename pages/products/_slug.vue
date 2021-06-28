@@ -12,7 +12,13 @@
             label="Precio"
           />
           <div class="pa-8 text-center">
-            <v-btn color="primary" @click="save">Guardar</v-btn>
+            <v-btn
+              color="primary"
+              :loading="isSaving"
+              :disabled="isSaving"
+              @click="save"
+              >Guardar</v-btn
+            >
           </div>
         </v-form>
       </v-col>
@@ -21,7 +27,7 @@
 </template>
 
 <script>
-import { create } from '@/services/products'
+// import { create } from '@/services/products'
 export default {
   data() {
     return {
@@ -30,17 +36,27 @@ export default {
         description: '',
         price: 0,
       },
+      isSaving: false,
     }
   },
   methods: {
     save() {
-      create(this.formData)
+      this.isSaving = true
+      this.$axios
+        .post('/apiProducts/products', this.formData)
         .then(() => {
           this.$router.push({
             path: '/products',
           })
         })
-        .catch((e) => console.error(e))
+        .catch((e) => {
+          this.$toasted.show()
+          console.error(e)
+        })
+        .finally(() => {
+          this.$toasted.show()
+          this.isSaving = true
+        })
     },
   },
 }

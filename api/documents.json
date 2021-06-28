@@ -1,0 +1,16 @@
+{
+  "documents": [
+    {
+      "id": 1,
+      "value": "DNI"
+    },
+    {
+      "id": 2,
+      "value": "RUC"
+    },
+    {
+      "id": 3,
+      "value": "Pasaporte"
+    }
+  ]
+}

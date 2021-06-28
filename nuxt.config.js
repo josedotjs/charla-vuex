@@ -37,19 +37,30 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
   ],
 
+  publicRuntimeConfig: {},
+
+  privateRuntimeConfig: {},
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
-
-  http: {
-    proxy: true, // Can be also an object with default options
+  axios: {
+    proxy: true,
   },
-
   proxy: {
-    '/api/': 'http://localhost:3001',
+    '/apiProducts': {
+      target: process.env.NUXT_ENV_BASE_URL_PRODUCTS,
+      pathRewrite: {
+        '^/apiProducts': '/api',
+      },
+    },
+    '/apiDocuments': {
+      target: process.env.NUXT_ENV_BASE_URL_DOCUMENTS,
+      pathRewrite: {
+        '^/apiDocuments': '/api',
+      },
+    },
   },
-
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -72,6 +83,21 @@ export default {
         },
       },
     },
+  },
+
+  toast: {
+    position: 'top-right',
+    register: [
+      // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Ocurrió un error al intentar recuperar los datos',
+        options: {
+          type: 'error',
+          duration: 2000,
+        },
+      },
+    ],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
