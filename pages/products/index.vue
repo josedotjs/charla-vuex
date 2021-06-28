@@ -21,6 +21,9 @@ export default {
       ],
     }
   },
+  fetch() {
+    this.$store.dispatch('products/getProducts')
+  },
   computed: {
     products() {
       return this.$store.state.products.products
@@ -28,9 +31,6 @@ export default {
     loading() {
       return this.$store.state.products.loading
     },
-  },
-  created() {
-    this.$store.dispatch('products/getProducts')
   },
 }
 </script>

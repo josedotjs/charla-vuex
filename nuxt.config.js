@@ -20,7 +20,11 @@ export default {
   css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    {
+      src: '~/plugins/api.js',
+    },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -38,27 +42,26 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/toast',
+    '@nuxtjs/proxy',
   ],
 
-  publicRuntimeConfig: {},
+  publicRuntimeConfig: {
+    API_PRODUCTS: '/api',
+    API_DOCUMENTS: '/apidocuments',
+  },
 
   privateRuntimeConfig: {},
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     proxy: true,
+    baseURL: '/',
   },
   proxy: {
-    '/apiProducts': {
+    '/api': {
       target: process.env.NUXT_ENV_BASE_URL_PRODUCTS,
-      pathRewrite: {
-        '^/apiProducts': '/api',
-      },
     },
-    '/apiDocuments': {
-      target: process.env.NUXT_ENV_BASE_URL_DOCUMENTS,
-      pathRewrite: {
-        '^/apiDocuments': '/api',
-      },
+    '/apidocuments': {
+      target: 'http://localhost:3002',
     },
   },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

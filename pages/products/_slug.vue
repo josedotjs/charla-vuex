@@ -19,6 +19,13 @@
               @click="save"
               >Guardar</v-btn
             >
+            <v-btn
+              color="error"
+              :loading="isSaving"
+              :disabled="isSaving"
+              to="/products"
+              >Volver</v-btn
+            >
           </div>
         </v-form>
       </v-col>
@@ -40,23 +47,23 @@ export default {
     }
   },
   methods: {
-    save() {
-      this.isSaving = true
-      this.$axios
-        .post('/apiProducts/products', this.formData)
-        .then(() => {
-          this.$router.push({
-            path: '/products',
-          })
-        })
-        .catch((e) => {
-          this.$toasted.show()
-          console.error(e)
-        })
-        .finally(() => {
-          this.$toasted.show()
-          this.isSaving = true
-        })
+    clearForm() {
+      this.formData = {
+        name: '',
+        description: '',
+        price: 0,
+      }
+    },
+    async save() {
+      try {
+        this.isSaving = true
+        const product = await this.$api.post('/products', this.formData)
+        this.$toasted.show('Registro guardado', product.id)
+      } catch (e) {
+        this.$toasted.show('Error')
+      } finally {
+        this.isSaving = false
+      }
     },
   },
 }

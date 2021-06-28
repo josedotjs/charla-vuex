@@ -2,8 +2,17 @@
   <div>
     <v-row>
       <v-col cols="12" lg="6" offset-lg="3" md="8" offset-md="2">
-        <document-selector v-model="formData.document" />
+        <document-selector
+          v-model="formData.document"
+          @change="onChangeDocument"
+        />
         <product-selector v-model="formData.product" />
+        <document-selector
+          v-model="formData.documents"
+          multiple
+          @change="onChangeDocuments"
+        />
+        <product-selector v-model="formData.products" multiple />
       </v-col>
     </v-row>
   </div>
@@ -16,6 +25,8 @@ export default {
       formData: {
         document: '',
         product: '',
+        documents: [],
+        products: [],
       },
     }
   },
@@ -28,6 +39,14 @@ export default {
     // await this.$store.dispatch('document/getAll')
     // await this.$store.dispatch('products/getProducts')
     console.timeEnd('loading')
+  },
+  methods: {
+    onChangeDocument() {
+      console.log('Document change')
+    },
+    onChangeDocuments() {
+      console.log('Documents change')
+    },
   },
 }
 </script>

@@ -5,7 +5,7 @@ const router = jsonServer.router(path.join(__dirname, 'db.json'))
 const middlewares = jsonServer.defaults()
 
 server.use(function (req, res, next) {
-  setTimeout(next, 3000)
+  setTimeout(next, 1000)
 })
 server.use(middlewares)
 server.use(jsonServer.bodyParser)

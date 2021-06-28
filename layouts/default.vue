@@ -129,6 +129,11 @@ export default {
           title: 'Checkout',
           to: '/checkout',
         },
+        {
+          icon: 'mdi-currency-usd',
+          title: 'Test',
+          to: '/test',
+        },
       ],
       miniVariant: false,
       right: true,

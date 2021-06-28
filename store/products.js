@@ -1,15 +1,17 @@
-export const state = () => ({
-  products: [],
-  loading: false,
-  loaded: false,
-})
+export const state = () => {
+  return {
+    products: [],
+    loading: false,
+    loaded: false,
+  }
+}
 
 export const actions = {
-  async getProducts({ commit }) {
+  async getProducts({ commit, apiProducts }) {
     try {
       commit('SET_LOADING', true)
-      const products = await this.$axios.get('/apiProducts/products')
-      commit('SET_PRODUCTS', products.data)
+      const { data } = await this.$api.get('/products')
+      commit('SET_PRODUCTS', data)
       commit('SET_LOADED', true)
     } catch (e) {
       console.error(e)

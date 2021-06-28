@@ -16,7 +16,7 @@ server.use((req, res, next) => {
   // Continue to JSON Server router
   next()
 })
-server.use('/api', router)
+server.use('/apidocuments', router)
 server.listen(3002, () => {
   console.log('JSON Server is running')
 })

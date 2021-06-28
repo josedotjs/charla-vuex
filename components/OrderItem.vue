@@ -10,7 +10,7 @@
 
     <v-img
       height="250"
-      src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+      src="https://images.pexels.com/photos/4085266/pexels-photo-4085266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     ></v-img>
     <v-card-title>{{ product.name }}</v-card-title>
     <v-card-text>
