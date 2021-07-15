@@ -12,7 +12,11 @@
       height="250"
       src="https://images.pexels.com/photos/4085266/pexels-photo-4085266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
     ></v-img>
-    <v-card-title>{{ product.name }}</v-card-title>
+    <v-card-title>
+      <v-btn text nuxt :to="`/products/show/${product.id}`">
+        {{ product.name }}
+      </v-btn>
+    </v-card-title>
     <v-card-text>
       <v-row align="center" class="mx-0">
         <v-rating
@@ -36,8 +40,8 @@
 
     <v-divider class="mx-4"></v-divider>
     <v-card-actions>
-      <v-badge icon="mdi-cart" :content="quantityInCart">
-        <v-btn color="deep-purple lighten-2" text @click="addToCart">
+      <v-badge icon="mdi-cart" :content="quantityInCart" style="width: 100%">
+        <v-btn color="deep-purple lighten-2" block text @click="addToCart">
           Agregar al carrito
         </v-btn>
       </v-badge>

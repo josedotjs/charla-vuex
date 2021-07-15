@@ -45,7 +45,7 @@ export default {
     }),
   },
   created() {
-    // this.$store.dispatch('document/getAll')
+    this.$store.dispatch('document/getAll')
   },
 
   methods: {

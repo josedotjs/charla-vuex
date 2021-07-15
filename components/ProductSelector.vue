@@ -3,7 +3,7 @@
     :items="products"
     :loading="loading"
     item-text="name"
-    item-value="id"
+    item-value="_id"
     placeholder="Seleccione un producto"
     v-bind="$attrs"
     v-on="customListeners"
@@ -12,14 +12,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   props: {
     value: {
       type: [String, Number, Array],
       default: '',
     },
+  },
+  data() {
+    return {
+      products: [],
+      loading: false,
+    }
   },
   computed: {
     customListeners() {
@@ -29,18 +33,31 @@ export default {
       }
       return { ...this.$listeners, input }
     },
-    ...mapState({
-      products: (state) => state.products.products,
-      loading: (state) => state.products.loading,
-      loaded: (state) => state.products.loaded,
-    }),
   },
-  created() {
-    if (!this.loaded) {
-      this.$store.dispatch('products/getProducts')
-    }
+  async created() {
+    await this.getData()
   },
   methods: {
+    async getData() {
+      try {
+        this.loading = true
+        const options = {
+          select: 'name',
+          // pagination: false,
+          // sort: '-name',
+          // limit: 2,
+        }
+        const { data } = await this.$apiMongoose.get(
+          `/products/query?${this.$serialize(options)}`
+        )
+        console.log(data)
+        this.products = data.docs
+      } catch (e) {
+        console.error(e)
+      } finally {
+        this.loading = false
+      }
+    },
     refresh() {
       this.$store.dispatch('products/getProducts')
     },

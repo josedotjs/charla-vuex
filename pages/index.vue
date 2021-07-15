@@ -49,14 +49,15 @@ export default {
       return this.$store.state.test.message
     },
     products() {
-      return this.$store.state.products.products
+      return this.$store.state.productsapi.products
     },
     loading() {
-      return this.$store.state.products.loading
+      return this.$store.state.productsapi.loading
     },
   },
   created() {
-    this.$store.dispatch('products/getProducts')
+    this.$store.dispatch('productsapi/getProducts')
+    console.log(Object.keys(this.$options))
   },
   methods: {
     testApi() {

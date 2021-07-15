@@ -7,10 +7,11 @@
           <base-text-area v-model="formData.description" label="Descripción" />
           <base-input
             v-model.number="formData.price"
-            class="text-right"
+            reverse
             type="number"
             label="Precio"
           />
+          <base-input v-model="formData.secretField" label="Campo secreto" />
           <div class="pa-8 text-center">
             <v-btn
               color="primary"
@@ -42,6 +43,7 @@ export default {
         name: '',
         description: '',
         price: 0,
+        secretField: '',
       },
       isSaving: false,
     }
@@ -57,8 +59,9 @@ export default {
     async save() {
       try {
         this.isSaving = true
-        const product = await this.$api.post('/products', this.formData)
+        const product = await this.$apiMongoose.post('/products', this.formData)
         this.$toasted.show('Registro guardado', product.id)
+        this.$router.push('/products')
       } catch (e) {
         this.$toasted.show('Error')
       } finally {

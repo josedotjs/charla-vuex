@@ -6,13 +6,21 @@
           v-model="formData.document"
           @change="onChangeDocument"
         />
-        <product-selector v-model="formData.product" />
-        <document-selector
+        <!-- <document-selector
           v-model="formData.documents"
           multiple
           @change="onChangeDocuments"
-        />
-        <product-selector v-model="formData.products" multiple />
+        /> -->
+        <products-api-selector v-model="formData.productApi" />
+        <!-- <product-selector
+          v-model="formData.products"
+          multiple
+          chips
+          deletable-chips
+        /> -->
+        <base-input v-mask="'#### #### #### ####'" reverse />
+        <base-input reverse />
+        <!-- <product-selector v-model="formData.product" /> -->
       </v-col>
     </v-row>
   </div>
@@ -27,19 +35,20 @@ export default {
         product: '',
         documents: [],
         products: [],
+        productApi: '',
       },
     }
   },
-  async created() {
-    console.time('loading')
-    await Promise.all([
-      this.$store.dispatch('document/getAll'),
-      this.$store.dispatch('products/getProducts'),
-    ])
-    // await this.$store.dispatch('document/getAll')
-    // await this.$store.dispatch('products/getProducts')
-    console.timeEnd('loading')
-  },
+  // async created() {
+  //   console.time('loading')
+  //   await Promise.all([
+  //     this.$store.dispatch('document/getAll'),
+  //     this.$store.dispatch('productsapi/getProducts'),
+  //   ])
+  //   await this.$store.dispatch('document/getAll')
+  //   await this.$store.dispatch('productsapi/getProducts')
+  //   console.timeEnd('loading')
+  // },
   methods: {
     onChangeDocument() {
       console.log('Document change')

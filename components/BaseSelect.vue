@@ -2,6 +2,7 @@
   <v-select
     v-bind="$attrs"
     outlined
+    loader-height="5"
     :full-width="true"
     append-outer-icon="mdi-refresh"
     v-on="$listeners"
@@ -12,9 +13,7 @@
 export default {
   inheritAttrs: false,
   data() {
-    return {
-      key: ' ',
-    }
+    return {}
   },
 }
 </script>

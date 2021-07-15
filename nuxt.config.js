@@ -24,6 +24,9 @@ export default {
     {
       src: '~/plugins/api.js',
     },
+    {
+      src: '~/plugins/mask.js',
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -45,9 +48,14 @@ export default {
     '@nuxtjs/proxy',
   ],
 
+  env: {
+    // test: process.env.AAA,
+  },
+
   publicRuntimeConfig: {
     API_PRODUCTS: '/api',
     API_DOCUMENTS: '/apidocuments',
+    API_MONGOOSE: '/models/api',
   },
 
   privateRuntimeConfig: {},
@@ -88,6 +96,13 @@ export default {
     },
   },
 
+  // Server middleware
+  serverMiddleware: [
+    {
+      path: '/models',
+      handler: '~/server-middleware/api.js',
+    },
+  ],
   toast: {
     position: 'top-right',
     register: [

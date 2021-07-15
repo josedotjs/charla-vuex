@@ -10,13 +10,8 @@ export const actions = {
   async getProducts({ commit, apiProducts }) {
     try {
       commit('SET_LOADING', true)
-      const options = {
-        pagination: false,
-      }
-      const { data } = await this.$apiMongoose.get(
-        `/products/query?${this.$serialize(options)}`
-      )
-      commit('SET_PRODUCTS', data.docs)
+      const { data } = await this.$api.get(`/products`)
+      commit('SET_PRODUCTS', data)
       commit('SET_LOADED', true)
     } catch (e) {
       console.error(e)

@@ -16,7 +16,7 @@
               <tr v-for="item in mappedCart" :key="item.product.id">
                 <td>{{ item.product.name }}</td>
                 <td>
-                  <v-btn x-small>+</v-btn>
+                  <v-btn x-small @click="addToCart(item.product)">+</v-btn>
                   {{ item.quantity }}
                   <v-btn x-small>-</v-btn>
                 </td>
@@ -86,6 +86,11 @@ export default {
     ...mapState({
       cart: (state) => state.cart.cart,
     }),
+  },
+  methods: {
+    addToCart(product) {
+      this.$store.dispatch('cart/addToCart', product)
+    },
   },
 }
 </script>
