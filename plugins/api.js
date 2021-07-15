@@ -1,11 +1,16 @@
 export default function ({ $axios, $config, env }, inject) {
-  console.log(env)
+  console.log('env', env)
+  console.log('$config', $config)
+
+  const baseUrlProducts = `${env.NUXT_ENV_BASE_URL_PRODUCTS}${$config.API_PRODUCTS}`
+  console.log('baseUrlProducts', baseUrlProducts)
   // Create a custom axios instance
   const apiProducts = $axios.create()
-  apiProducts.setBaseURL($config.API_PRODUCTS)
+  apiProducts.setBaseURL(baseUrlProducts)
 
+  const baseUrlDocuments = `${env.NUXT_ENV_BASE_URL_DOCUMENTS}${$config.API_DOCUMENTS}`
   const apiDocuments = $axios.create()
-  apiDocuments.setBaseURL(`http://localhost:3002${$config.API_DOCUMENTS}`)
+  apiDocuments.setBaseURL(baseUrlDocuments)
 
   const apiMongoose = $axios.create({
     baseURL: $config.API_MONGOOSE,

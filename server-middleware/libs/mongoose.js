@@ -24,6 +24,7 @@ const gracefulExit = () => {
   console.log(`Cerrando conexión de ${HOST} \n`)
   // console.log(db)
   mongoose.connection.close()
+  process.exit()
 }
 
 process.on('SIGINT', gracefulExit).on('SIGTERM', gracefulExit)

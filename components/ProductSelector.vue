@@ -43,7 +43,7 @@ export default {
         this.loading = true
         const options = {
           select: 'name',
-          // pagination: false,
+          pagination: false,
           // sort: '-name',
           // limit: 2,
         }
@@ -58,8 +58,8 @@ export default {
         this.loading = false
       }
     },
-    refresh() {
-      this.$store.dispatch('products/getProducts')
+    async refresh() {
+      await this.this.getData()
     },
   },
 }

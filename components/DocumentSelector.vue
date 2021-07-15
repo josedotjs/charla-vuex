@@ -31,7 +31,6 @@ export default {
   computed: {
     customListeners() {
       const vm = this
-      // `Object.assign` merges objects together to form a new object
       return {
         ...this.$listeners,
         input: (event) => {
@@ -45,7 +44,7 @@ export default {
     }),
   },
   created() {
-    this.$store.dispatch('document/getAll')
+    // this.$store.dispatch('document/getAll')
   },
 
   methods: {

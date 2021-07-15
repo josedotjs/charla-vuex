@@ -28,7 +28,7 @@ export default {
     }),
   },
   created() {
-    this.$store.dispatch('productsapi/getProducts')
+    // this.$store.dispatch('productsapi/getProducts')
   },
 }
 </script>

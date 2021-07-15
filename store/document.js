@@ -10,7 +10,6 @@ export const state = () => {
 export const actions = {
   async getAll({ commit, state }) {
     try {
-      console.log('action', this.$apiDocuments)
       commit('SET_LOADING', true)
       const { data } = await this.$apiDocuments.get('/documents')
       commit('SET_DOCUMENTS', data)

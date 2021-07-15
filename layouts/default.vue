@@ -114,14 +114,14 @@ export default {
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Productos',
-          to: '/products',
-        },
-        {
           icon: 'mdi-currency-usd',
           title: 'Checkout',
           to: '/checkout',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Productos',
+          to: '/products',
         },
         {
           icon: 'mdi-currency-usd',

@@ -50,6 +50,7 @@ export default {
 
   env: {
     // test: process.env.AAA,
+    message: process.env.TEST_MESSAGE,
   },
 
   publicRuntimeConfig: {
@@ -64,14 +65,14 @@ export default {
     proxy: true,
     baseURL: '/',
   },
-  proxy: {
-    '/api': {
-      target: process.env.NUXT_ENV_BASE_URL_PRODUCTS,
-    },
-    '/apidocuments': {
-      target: 'http://localhost:3002',
-    },
-  },
+  // proxy: {
+  //   '/api': {
+  //     target: process.env.NUXT_ENV_BASE_URL_PRODUCTS,
+  //   },
+  //   '/apidocuments': {
+  //     target: 'http://localhost:3002',
+  //   },
+  // },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],

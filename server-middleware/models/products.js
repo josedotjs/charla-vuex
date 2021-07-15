@@ -32,16 +32,16 @@ ProductSchema.plugin(mongoosePaginate)
 const blackList = ['secretField']
 
 ProductSchema.statics.getList = function (query = {}, options = {}) {
-  const selectFields = 'name price secretField'
+  const selectFields = options.select || ''
   const fieldsToSelect = selectFields
     .split(' ')
     .filter((field) => !blackList.includes(field))
     .join(' ')
   const paginateOptions = {
-    select: fieldsToSelect,
     sort: { _id: -1 },
     lean: true,
     ...options,
+    select: fieldsToSelect,
   }
   return this.paginate(query, paginateOptions)
 }
