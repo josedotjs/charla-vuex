@@ -3,6 +3,7 @@
     <v-row>
       <v-col cols="12" sm="12" md="8" lg="6" offset-lg="3" offset-md="2">
         <v-form>
+          <categories-selector v-model="formData.category" />
           <base-input v-model="formData.name" label="Nombre" />
           <base-text-area v-model="formData.description" label="Descripción" />
           <base-input
@@ -44,6 +45,7 @@ export default {
         description: '',
         price: 0,
         secretField: '',
+        category: null,
       },
       isSaving: false,
     }
@@ -59,8 +61,8 @@ export default {
     async save() {
       try {
         this.isSaving = true
-        const product = await this.$apiMongoose.post('/products', this.formData)
-        this.$toasted.show('Registro guardado', product.id)
+        await this.$apiMongoose.post('/products', this.formData)
+        this.$toast.global.saved()
         this.$router.push('/products')
       } catch (e) {
         this.$toasted.show('Error')

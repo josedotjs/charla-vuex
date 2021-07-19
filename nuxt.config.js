@@ -116,6 +116,14 @@ export default {
           duration: 2000,
         },
       },
+      {
+        name: 'saved',
+        message: 'El registro se ha guardado correctamente',
+        options: {
+          type: 'success',
+          duration: 2000,
+        },
+      },
     ],
   },
 

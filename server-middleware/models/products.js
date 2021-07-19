@@ -16,6 +16,10 @@ const ProductSchema = new Schema(
       type: Number,
       default: 0,
     },
+    category: {
+      type: Schema.Types.ObjectId,
+      ref: 'categories',
+    },
     secretField: {
       type: String,
       default: '',
@@ -39,7 +43,6 @@ ProductSchema.statics.getList = function (query = {}, options = {}) {
     .join(' ')
   const paginateOptions = {
     sort: { _id: -1 },
-    lean: true,
     ...options,
     select: fieldsToSelect,
   }
