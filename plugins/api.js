@@ -16,6 +16,10 @@ export default function ({ $axios, $config, env }, inject) {
     baseURL: $config.API_MONGOOSE,
   })
 
+  const apiPaginator = $axios.create({
+    baseURL: 'http://localhost:3005',
+  })
+
   const serialize = function (obj, prefix) {
     const str = []
     let p
@@ -36,5 +40,6 @@ export default function ({ $axios, $config, env }, inject) {
   inject('api', apiProducts)
   inject('apiDocuments', apiDocuments)
   inject('apiMongoose', apiMongoose)
+  inject('apiPaginator', apiPaginator)
   inject('serialize', serialize)
 }

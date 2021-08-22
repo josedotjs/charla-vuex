@@ -128,6 +128,11 @@ export default {
           title: 'Test',
           to: '/test',
         },
+        {
+          icon: 'mdi-currency-usd',
+          title: 'Test',
+          to: '/testpaginator',
+        },
       ],
       miniVariant: false,
       right: true,

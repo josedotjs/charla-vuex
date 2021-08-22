@@ -1,13 +1,7 @@
 <template>
-  <data-grid-provider
-    v-slot="{
-      loading,
-      items,
-      serverError,
-      generateExcel,
-      generatingExcel,
-      paginationData,
-    }"
+  <data-paginator-provider
+    v-slot="{ loading, items, serverError, paginationData }"
+    :api="api"
     :options="options"
     :url="apiUrl"
   >
@@ -16,43 +10,42 @@
         {{ serverError }}
       </div>
       <div v-else>
-        <v-btn :loading="generatingExcel" @click="generateExcel">
-          Generar excel
-        </v-btn>
         <slot name="filters" />
-        <v-data-table
+        <v-data-iterator
+          v-bind="$attrs"
           :items="items"
           :loading="loading"
-          :items-per-page="options.limit"
+          :items-per-page="itemsPerPage[0] || options.limit"
           :page="options.page"
           :server-items-length="paginationData.totalDocs"
-          v-bind="$attrs"
+          :footer-props="{ 'items-per-page-options': itemsPerPage }"
           @update:options="onUpdateOptions"
           v-on="$listeners"
         >
-          <template v-slot:item.price="{ item }"> $ {{ item.price }} </template>
-        </v-data-table>
+          <template v-for="(_, slot) of $scopedSlots" #[slot]="scope"
+            ><slot :name="slot" v-bind="scope"
+          /></template>
+        </v-data-iterator>
       </div>
     </div>
-  </data-grid-provider>
+  </data-paginator-provider>
 </template>
 
 <script>
 export default {
-  filters: {
-    currency(value) {
-      return parseFloat(value).toFixed(2)
-    },
-  },
   inheritAttrs: false,
   props: {
-    apiName: {
+    api: {
       type: String,
       default: '$api',
     },
     apiUrl: {
       type: String,
       required: true,
+    },
+    itemsPerPage: {
+      type: Array,
+      default: () => [10, 20, 30, 50],
     },
     queryOptions: {
       type: Object,
@@ -71,7 +64,7 @@ export default {
   },
   methods: {
     onUpdateOptions(value) {
-      console.log('options', value)
+      console.log('options change', value)
       let sort = {}
       if (value.sortBy.length) {
         // console.log(value.sortBy, value.sortDesc[0])

@@ -1,7 +1,7 @@
 const ProductModel = require('../models/products')
 
 exports.getList = async (req, res, next) => {
-  const { query, ...options } = req.query
+  const { query, ...options } = JSON.parse(Object.keys(req.query)[0])
 
   const normalizedOptions = {
     limit: 10,
@@ -10,7 +10,7 @@ exports.getList = async (req, res, next) => {
     ...options,
   }
   normalizedOptions.pagination = normalizedOptions.pagination !== 'false'
-  console.log(normalizedOptions)
+  // console.log(normalizedOptions)
   const products = await ProductModel.getList(query, normalizedOptions)
   res.status(200).json(products)
 }

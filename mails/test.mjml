@@ -1,0 +1,54 @@
+<mjml>
+  <mj-body color="#FFFFFF" font-family="Verdana">
+    
+    <mj-section>
+      <mj-column width="100%">
+        <mj-image width="100px" src="./logo.png" alt="" />
+      </mj-column>
+      <mj-column width="100%">
+        <mj-text align="center" color="#8f98b1">
+          Hola Gaspar,
+        </mj-text>
+      </mj-column>
+      
+    </mj-section>
+    <mj-section>
+    <mj-column width="100%">
+        <mj-text align="center" font-family="Verdana" font-size="24px">
+          La familia Wally te da la
+        </mj-text>
+      </mj-column>
+      <mj-column width="100%">
+        <mj-image src="./bienvenida.gif" width="320px" alt="" />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column width="100%">
+        <mj-text align="center" color="#8f98b1">
+          ¡Mucho gusto! Estamos muy contentos de poder formar parte de tu crecimiento. Lograremos cosas extraordinarias juntos.
+        </mj-text>
+        <mj-button background-color="#1f2132">
+          Empieza ahora
+        </mj-button>
+        <mj-divider border-width="1px"  border-color="rgb(128, 128, 128)" />
+        <mj-text align="left">
+          Te recordamos nuestros diversos canales de atención:
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column width="15%">
+        <mj-image align="left" src="./whatsapp.png" width="26px" alt="" />
+      </mj-column>
+      <mj-column width="85%" >
+        <mj-text align="left">
+          Chat de soporte
+        </mj-text>
+        <mj-text align="left" color="#8f98b1">
+          Todos los días de 8:00 am a 8:00 pm
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    
+  </mj-body>
+</mjml>

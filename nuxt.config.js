@@ -27,6 +27,14 @@ export default {
     {
       src: '~/plugins/mask.js',
     },
+    {
+      src: '~/plugins/datepicker.js',
+      mode: 'client',
+    },
+    {
+      src: '~/plugins/trix.js',
+      mode: 'client',
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -65,17 +73,15 @@ export default {
     proxy: true,
     baseURL: '/',
   },
-  // proxy: {
-  //   '/api': {
-  //     target: process.env.NUXT_ENV_BASE_URL_PRODUCTS,
-  //   },
-  //   '/apidocuments': {
-  //     target: 'http://localhost:3002',
-  //   },
-  // },
+  proxy: {
+    '/paginate': {
+      target: 'http://localhost:3005',
+    },
+  },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
+    // treeShake: true,
     lang: {
       locales: { es },
       current: 'es',

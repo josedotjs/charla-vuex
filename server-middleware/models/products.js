@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const mongoosePaginate = require('mongoose-paginate-v2')
 
 const ProductSchema = new Schema(
   {
@@ -31,11 +30,13 @@ const ProductSchema = new Schema(
   }
 )
 
-ProductSchema.plugin(mongoosePaginate)
-
 const blackList = ['secretField']
 
-ProductSchema.statics.getList = function (query = {}, options = {}) {
+ProductSchema.statics.getList = function (
+  query = {},
+  options = {},
+  blacklist = []
+) {
   const selectFields = options.select || ''
   const fieldsToSelect = selectFields
     .split(' ')

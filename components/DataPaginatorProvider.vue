@@ -1,9 +1,10 @@
 <script>
 import { generateExcelFromJSON } from '@/utils/excel'
+import serialize from 'serialize-javascript'
 
 export default {
   props: {
-    apiName: {
+    api: {
       type: String,
       default: '$apiMongoose',
     },
@@ -30,29 +31,28 @@ export default {
   watch: {
     options: {
       handler(newVal) {
+        console.log('change options')
         this.fetchData()
       },
       deep: true,
     },
   },
-  created() {
+  mounted() {
     this.fetchData()
   },
   methods: {
     async fetchData() {
       try {
         this.loading = true
-        console.log('fetch data', this.options)
-        const response = await this[this.apiName].get(
-          `${this.url}?${this.$serialize(this.options)}`
+        // console.log('fetch data', this.api, this.url, this.options)
+        const response = await this[this.api].get(
+          `${this.url}?${serialize(this.options, { isJSON: true })}`
         )
         const { docs, ...paginationData } = response.data
         this.items = docs
         this.paginationData = paginationData
       } catch (e) {
-        this.$toasted.show(
-          'Se produjo un error al intentar recuperar los datos'
-        )
+        console.error(e)
         this.serverError =
           e.response?.message ||
           'Se produjo un error al intentar recuperar los datos'
@@ -67,8 +67,8 @@ export default {
           ...this.options,
           pagination: false,
         }
-        const response = await this[this.apiName].get(
-          `/products/query?${this.$serialize(newOptions)}`
+        const response = await this[this.api].get(
+          `${this.url}?${this.$serialize(newOptions)}`
         )
         console.log('generarReporte', response.data.docs)
         generateExcelFromJSON(response.data.docs)
@@ -87,6 +87,7 @@ export default {
       serverError: this.serverError,
       generatingExcel: this.generatingExcel,
       generateExcel: this.generateExcel,
+      scopedSlots: this.$scopedSlots,
     })
   },
 }
