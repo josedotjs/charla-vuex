@@ -1,8 +1,9 @@
 <template>
-  <fieldset class="item d-flex flex-row">
+  <fieldset class="item d-flex flex-row fw">
     <legend>{{ label }}</legend>
     <date-picker
       :range="true"
+      class="fw"
       value-type="timestamp"
       :shortcuts="shortcuts"
       v-bind="$attrs"
@@ -95,7 +96,6 @@ export default {
 .item {
   font-size: 0.8rem;
   border: 0;
-  max-width: 300px;
   margin-right: 0.5rem;
 }
 .item-input {

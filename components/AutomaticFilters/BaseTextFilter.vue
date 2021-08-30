@@ -1,5 +1,5 @@
 <template>
-  <fieldset class="item">
+  <fieldset class="item fw">
     <legend>{{ label }}</legend>
     <div>
       <!-- <select class="item-select">
@@ -7,7 +7,7 @@
           {{ item.text }}
         </option>
       </select> -->
-      <input class="item-input" type="text" @input="onTextchange" />
+      <input class="item-input fw" type="text" @input="onTextchange" />
     </div>
   </fieldset>
 </template>
@@ -50,16 +50,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.item {
-  font-size: 0.8rem;
-  border: 0;
-  max-width: 300px;
-  margin-right: 0.5rem;
-}
-.item-select,
-.item-input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-}
-</style>
+<style lang="scss" scoped></style>

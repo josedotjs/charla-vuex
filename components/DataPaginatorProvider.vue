@@ -45,8 +45,9 @@ export default {
       try {
         this.loading = true
         // console.log('fetch data', this.api, this.url, this.options)
+        console.log('options', this.options)
         const response = await this[this.api].get(
-          `${this.url}?${serialize(this.options, { isJSON: true })}`
+          `${this.url}?q=${serialize(this.options, { ignoreFunction: true })}`
         )
         const { docs, ...paginationData } = response.data
         this.items = docs

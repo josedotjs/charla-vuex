@@ -22,15 +22,20 @@
         </td>
       </template>
     </base-data-grid-paginated>
-    <!-- <base-data-iterator-paginated
+    <base-select-populated
       api="$apiPaginator"
       api-url="/paginator"
-      :query-options="options"
-      :itemsPerPage="[6, 12, 24]"
-      item-key="_id"
-      @pagination="onPagination"
+      :query-options="optionsSelect"
+      :item-text="(item) => `${item.firstName} ${item.lastName}`"
+    />
+    <!-- <base-data-grid-paginated
+      api="$apiPaginator"
+      api-url="/paginator"
+      :items-per-page="[6, 12, 24]"
+      :select-fields="selectFields"
+      component-type="v-data-iterator"
     >
-      <template v-slot:default="{ items }">
+      <template #default="{ items }">
         <v-container>
           <v-row>
             <v-col
@@ -47,7 +52,7 @@
           </v-row>
         </v-container>
       </template>
-    </base-data-iterator-paginated> -->
+    </base-data-grid-paginated> -->
   </div>
 </template>
 
@@ -91,11 +96,61 @@ export default {
       ],
       selectFields: 'firstName lastName birthDate pets',
       date: [],
+      optionsSelect: {
+        select: 'firstName lastName',
+        sort: {
+          firstName: 1,
+        },
+      },
     }
   },
   computed: {
+    customFilters() {
+      return [
+        {
+          value: 'pets',
+          filterType: FILTER_TYPES.ComboMultiple,
+          filterValue: null,
+          items: [
+            {
+              text: 'Bracco Italiano',
+              value: 'Bracco Italiano',
+            },
+            {
+              text: 'Devon Rex',
+              value: 'Devon Rex',
+            },
+          ],
+        },
+        {
+          value: 'active',
+          filterType: FILTER_TYPES.Boolean,
+          filterValue: null,
+          text: 'Estado',
+        },
+        {
+          value: '_id',
+          filterType: FILTER_TYPES.ComboPopulated,
+          filterValue: null,
+          api: '$apiPaginator',
+          apiUrl: '/paginator',
+          queryOptions: this.optionsSelect,
+          itemText: (item) => `${item.firstName} ${item.lastName}`,
+          itemValue: '_id',
+        },
+        {
+          value: 'accountBalance',
+          filterType: FILTER_TYPES.Numeric,
+          filterValue: null,
+          text: 'Test',
+        },
+      ]
+    },
     tableFilters() {
-      return this.dataHeaders.filter((header) => header.showInFilters)
+      return [
+        ...this.dataHeaders.filter((header) => header.showInFilters),
+        ...this.customFilters,
+      ]
     },
   },
 }

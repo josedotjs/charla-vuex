@@ -5,3 +5,18 @@ body,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' !important;
 }
+
+.fw {
+  width: 100%;
+}
+
+fieldset.item {
+  font-size: 0.8rem;
+  border: 0;
+  margin-right: 0.5rem;
+}
+.item-select,
+.item-input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}
