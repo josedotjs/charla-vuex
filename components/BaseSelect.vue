@@ -1,15 +1,12 @@
 <template>
-  <fieldset class="d-flex flex-row fw item">
-    <legend>{{ label }}</legend>
-    <v-select
-      v-bind="$attrs"
-      dense
-      outlined
-      loader-height="5"
-      :full-width="true"
-      v-on="customListeners"
-    />
-  </fieldset>
+  <v-select
+    v-bind="$attrs"
+    dense
+    outlined
+    loader-height="5"
+    :full-width="true"
+    v-on="customListeners"
+  />
 </template>
 
 <script>
@@ -18,6 +15,10 @@ export default {
   props: {
     value: {
       type: [String, Array, Boolean],
+      default: '',
+    },
+    label: {
+      type: String,
       default: '',
     },
   },

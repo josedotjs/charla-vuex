@@ -1,10 +1,9 @@
 <template>
-  <fieldset class="d-flex flex-row fw item">
-    <legend>{{ label }}</legend>
+  <div>
     <slot name="prependControl" />
-    <v-text-field v-bind="$attrs" outlined full-width v-on="$customListeners" />
+    <v-text-field v-bind="$attrs" outlined full-width v-on="customListeners" />
     <slot name="appendControl" />
-  </fieldset>
+  </div>
 </template>
 
 <script>

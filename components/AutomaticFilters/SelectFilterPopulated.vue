@@ -1,18 +1,25 @@
 <template>
-  <base-select-populated
-    v-bind="$attrs"
-    multiple
-    :api="api"
-    :api-url="apiUrl"
-    :query-options="queryOptions"
-    v-on="customListeners"
-  />
+  <fieldset class="item d-flex flex-row fw">
+    <legend>{{ label }}</legend>
+    <base-select-populated
+      v-bind="$attrs"
+      multiple
+      :api="api"
+      :api-url="apiUrl"
+      :query-options="queryOptions"
+      v-on="customListeners"
+    />
+  </fieldset>
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
   props: {
+    label: {
+      type: String,
+      default: '',
+    },
     filterKey: {
       type: String,
       required: true,

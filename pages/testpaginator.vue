@@ -111,6 +111,7 @@ export default {
           value: 'pets',
           filterType: FILTER_TYPES.ComboMultiple,
           filterValue: null,
+          text: 'Mascota',
           items: [
             {
               text: 'Bracco Italiano',
@@ -129,6 +130,7 @@ export default {
           text: 'Estado',
         },
         {
+          text: 'Label',
           value: '_id',
           filterType: FILTER_TYPES.ComboPopulated,
           filterValue: null,
@@ -141,7 +143,7 @@ export default {
         {
           value: 'accountBalance',
           filterType: FILTER_TYPES.Numeric,
-          filterValue: null,
+          filterValue: ['0'],
           text: 'Test',
         },
       ]

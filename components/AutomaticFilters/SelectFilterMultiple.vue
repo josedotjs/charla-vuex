@@ -1,10 +1,22 @@
 <template>
-  <base-select :items="items" multiple v-bind="$attrs" v-on="customListeners" />
+  <fieldset class="item d-flex flex-row fw">
+    <legend>{{ label }}</legend>
+    <base-select
+      :items="items"
+      multiple
+      v-bind="$attrs"
+      v-on="customListeners"
+    />
+  </fieldset>
 </template>
 
 <script>
 export default {
   props: {
+    label: {
+      type: String,
+      default: '',
+    },
     filterKey: {
       type: String,
       required: true,
