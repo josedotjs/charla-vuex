@@ -9,6 +9,7 @@
       :single-expand="true"
       :table-filters="tableFilters"
       show-expand
+      @filter-change="onFilterChange"
     >
       <template #item.firstName="{ item }">
         <b>{{ item.firstName }}</b>
@@ -66,6 +67,9 @@ export default {
   },
   data() {
     return {
+      queryFilters: {
+        firstName: '',
+      },
       expanded: [],
       dataHeaders: [
         {
@@ -95,7 +99,6 @@ export default {
         },
       ],
       selectFields: 'firstName lastName birthDate pets',
-      date: [],
       optionsSelect: {
         select: 'firstName lastName',
         sort: {
@@ -153,6 +156,11 @@ export default {
         ...this.dataHeaders.filter((header) => header.showInFilters),
         ...this.customFilters,
       ]
+    },
+  },
+  methods: {
+    onFilterChange(vals) {
+      console.log('onFilterChange', vals)
     },
   },
 }

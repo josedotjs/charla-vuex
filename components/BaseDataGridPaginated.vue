@@ -103,6 +103,7 @@ export default {
     // console.log('data', this.queryOptions)
     // const sortKey = Object.keys(this.queryOptions.sort)[0] || '_id'
     // const sortDesc = this.queryOptions.sort === -1
+    console.log('data')
     return {
       options: {
         query: {},
@@ -143,21 +144,8 @@ export default {
         this.$set(this.options, 'query', query)
       }
       console.log('new query', this.options.query)
-      // if (type === 'date') {
-      //   const dateFilter = {
-      //     $gte: val[0],
-      //     $lte: val[1],
-      //   }
-      //   this.$set(this.options.query, key, dateFilter)
-      // } else if (type === 'boolean') {
-      //   console.log('to be continued')
-      // } else {
-      //   this.$set(this.options.query, key, {
-      //     $regex: `^${val}`,
-      //     $options: 'i',
-      //   })
-      // }
       this.options.page = 1
+      this.$emit('filter-change', { ...this.query, ...this.options })
     },
     onUpdateOptions(value) {
       let sortField
